@@ -19,5 +19,17 @@
             var method = publishAsyncMethod.MakeGenericMethod(@event.GetType());
             return (Task)method.Invoke(eventDispatcher, new[] { @event });
         }
+
+        internal static string DiscoverDispatcherName(this object dispatcher)
+        {
+            var name = dispatcher.ToString();
+
+            if (name == dispatcher.GetType().FullName)
+            {
+                name = dispatcher.GetType().Name;
+            }
+
+            return name;
+        }
     }
 }

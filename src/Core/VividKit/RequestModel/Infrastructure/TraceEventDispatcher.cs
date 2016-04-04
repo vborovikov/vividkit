@@ -6,33 +6,34 @@
 
     public class TraceEventDispatcher : IEventDispatcher
     {
-        private readonly IEventDispatcher eventDispatcher;
+        private readonly IEventDispatcher dispatcher;
+        private readonly string dispatcherName;
 
         public TraceEventDispatcher(IEventDispatcher eventDispatcher)
         {
-            this.eventDispatcher = eventDispatcher;
+            this.dispatcher = eventDispatcher;
+            this.dispatcherName = this.dispatcher.DiscoverDispatcherName();
         }
 
         public async Task PublishAsync<TEvent>(TEvent e) where TEvent : class, IEvent
         {
-            var dispatcherName = this.eventDispatcher.GetType().Name;
             var eventName = e.GetType().Name;
 
             try
             {
-                Log.EventPublishing(dispatcherName, eventName);
-                Log.EventData(dispatcherName, e.ToString());
+                Log.EventPublishing(this.dispatcherName, eventName);
+                Log.EventData(this.dispatcherName, e.ToString());
 
-                await this.eventDispatcher.PublishAsync(e);
+                await this.dispatcher.PublishAsync(e);
             }
             catch (Exception x)
             {
-                Log.EventError(dispatcherName, eventName, x.ToString());
+                Log.EventError(this.dispatcherName, eventName, x.ToString());
                 throw;
             }
             finally
             {
-                Log.EventPublished(dispatcherName, eventName);
+                Log.EventPublished(this.dispatcherName, eventName);
             }
         }
     }

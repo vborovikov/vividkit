@@ -6,33 +6,34 @@ namespace Toolkit.RequestModel.Infrastructure
 
     public class TraceCommandDispatcher : ICommandDispatcher
     {
-        private readonly ICommandDispatcher commandDispatcher;
+        private readonly ICommandDispatcher dispatcher;
+        private readonly string dispatcherName;
 
         public TraceCommandDispatcher(ICommandDispatcher commandDispatcher)
         {
-            this.commandDispatcher = commandDispatcher;
+            this.dispatcher = commandDispatcher;
+            this.dispatcherName = this.dispatcher.DiscoverDispatcherName();
         }
 
         public async Task ExecuteAsync<TCommand>(TCommand command) where TCommand : class, ICommand
         {
-            var dispatcherName = this.commandDispatcher.GetType().Name;
             var commandName = command.GetType().Name;
 
             try
             {
-                Log.CommandExecuting(dispatcherName, commandName);
-                Log.CommandData(dispatcherName, command.ToString());
+                Log.CommandExecuting(this.dispatcherName, commandName);
+                Log.CommandData(this.dispatcherName, command.ToString());
 
-                await this.commandDispatcher.ExecuteAsync(command);
+                await this.dispatcher.ExecuteAsync(command);
             }
             catch (Exception x)
             {
-                Log.CommandError(dispatcherName, commandName, x.ToString());
+                Log.CommandError(this.dispatcherName, commandName, x.ToString());
                 throw;
             }
             finally
             {
-                Log.CommandExecuted(dispatcherName, commandName);
+                Log.CommandExecuted(this.dispatcherName, commandName);
             }
         }
     }

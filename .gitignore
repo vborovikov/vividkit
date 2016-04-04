@@ -20,6 +20,9 @@ x86/
 bld/
 [Bb]in/
 [Oo]bj/
+# VividKit specific build results for Nuget
+src/Core/Package/lib/*
+
 
 # Visual Studio 2015 cache/options directory
 .vs/
