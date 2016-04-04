@@ -6,7 +6,7 @@
     <title>VividKit</title>
     <authors>Vladislav Borovikov</authors>
     <owners>Vladislav Borovikov</owners>
-    <licenseUrl>https://github.com/vborovikov/vividkit/blob/master/LICENSE.md</licenseUrl>
+    <licenseUrl>https://github.com/vborovikov/vividkit/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://github.com/vborovikov/vividkit</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MVVM and CQRS Toolkit for .NET Core/4.5 apps</description>
