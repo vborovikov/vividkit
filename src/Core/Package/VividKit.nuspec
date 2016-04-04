@@ -2,16 +2,16 @@
 <package>
   <metadata>
     <id>VividKit</id>
-    <version>2.1.1.0</version>
+    <version>2.1.2.0</version>
     <title>VividKit</title>
     <authors>Vladislav Borovikov</authors>
     <owners>Vladislav Borovikov</owners>
-    <licenseUrl>http://vividkit.codeplex.com/license</licenseUrl>
-    <projectUrl>http://vividkit.codeplex.com/</projectUrl>
+    <licenseUrl>https://github.com/vborovikov/vividkit/blob/master/LICENSE.md</licenseUrl>
+    <projectUrl>https://github.com/vborovikov/vividkit</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>MVVM and CQRS Toolkit for .NET Core/4.5 apps</description>
     <releaseNotes></releaseNotes>
-    <copyright>Copyright © 2015 Vladislav Borovikov</copyright>
+    <copyright>Copyright © 2016 Vladislav Borovikov</copyright>
     <tags>mvvm cqrs</tags>
     <dependencies>
       <group targetFramework="dotnet">
