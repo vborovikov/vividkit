@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4ABA5E6C-5282-4FD3-89CF-5C73B8C88DE8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>VividKit</RootNamespace>
+    <AssemblyName>VividKit</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Package\lib\net45\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>..\Package\lib\net45\VividKit.XML</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\DebugCommandDispatcher.cs">
+      <Link>RequestModel\Infrastructure\DebugCommandDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\DebugEventDispatcher.cs">
+      <Link>RequestModel\Infrastructure\DebugEventDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\DebugQueryDispatcher.cs">
+      <Link>RequestModel\Infrastructure\DebugQueryDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IRequest.cs">
+      <Link>RequestModel\IRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\RequestBase.cs">
+      <Link>RequestModel\RequestBase.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\VividKit\ComponentModel\DefaultCommandManager.cs">
+      <Link>ComponentModel\DefaultCommandManager.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\ComponentModel\Disposable.cs">
+      <Link>ComponentModel\Disposable.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\ComponentModel\ICleanup.cs">
+      <Link>ComponentModel\ICleanup.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\ComponentModel\ICommandManager.cs">
+      <Link>ComponentModel\ICommandManager.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\ComponentModel\IDispatcher.cs">
+      <Link>ComponentModel\IDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\ComponentModel\IWeakEventHandler.cs">
+      <Link>ComponentModel\IWeakEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\ComponentModel\PropertyManager.cs">
+      <Link>ComponentModel\PropertyManager.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\ComponentModel\DefaultWeakEventHandler.cs">
+      <Link>ComponentModel\DefaultWeakEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\ComponentModel\ServiceProviderBase.cs">
+      <Link>ComponentModel\ServiceProviderBase.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\DocumentModel\Document.cs">
+      <Link>DocumentModel\Document.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\DocumentModel\DocumentRepository.cs">
+      <Link>DocumentModel\DocumentRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\DocumentModel\Edit.cs">
+      <Link>DocumentModel\Edit.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\DocumentModel\IChangeApplying.cs">
+      <Link>DocumentModel\IChangeApplying.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\DocumentModel\IDocumentChangeStore.cs">
+      <Link>DocumentModel\IDocumentChangeStore.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\DocumentModel\IDocumentRepository.cs">
+      <Link>DocumentModel\IDocumentRepository.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\IViewModelCommand.cs">
+      <Link>PresentationModel\IViewModelCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\Navigation\INavigable.cs">
+      <Link>PresentationModel\Navigation\INavigable.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\Navigation\INavigationService.cs">
+      <Link>PresentationModel\Navigation\INavigationService.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\Navigation\ITombstone.cs">
+      <Link>PresentationModel\Navigation\ITombstone.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\Navigation\IUriBuilder.cs">
+      <Link>PresentationModel\Navigation\IUriBuilder.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\Navigation\NavigableAttribute.cs">
+      <Link>PresentationModel\Navigation\NavigableAttribute.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\Navigation\NavigableViewModel.cs">
+      <Link>PresentationModel\Navigation\NavigableViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\ViewModel.cs">
+      <Link>PresentationModel\ViewModel.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\ViewModelCommand.cs">
+      <Link>PresentationModel\ViewModelCommand.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\ViewModelCommandBase.cs">
+      <Link>PresentationModel\ViewModelCommandBase.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\ViewModelCommandExtensions.cs">
+      <Link>PresentationModel\ViewModelCommandExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\PresentationModel\ViewModelCommand`1.cs">
+      <Link>PresentationModel\ViewModelCommand`1.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\CommandBase.cs">
+      <Link>RequestModel\CommandBase.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\DispatcherExtensions.cs">
+      <Link>RequestModel\DispatcherExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\EventBase.cs">
+      <Link>RequestModel\EventBase.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IAsyncCommandHandler.cs">
+      <Link>RequestModel\IAsyncCommandHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IAsyncEventHandler.cs">
+      <Link>RequestModel\IAsyncEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IAsyncQueryHandler.cs">
+      <Link>RequestModel\IAsyncQueryHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\ICommand.cs">
+      <Link>RequestModel\ICommand.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\ICommandDispatcher.cs">
+      <Link>RequestModel\ICommandDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\ICommandHandler.cs">
+      <Link>RequestModel\ICommandHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IEvent.cs">
+      <Link>RequestModel\IEvent.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IEventDispatcher.cs">
+      <Link>RequestModel\IEventDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IEventHandler.cs">
+      <Link>RequestModel\IEventHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IEventHandlerProvider.cs">
+      <Link>RequestModel\IEventHandlerProvider.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\DefaultCommandDispatcher.cs">
+      <Link>RequestModel\Infrastructure\DefaultCommandDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\DefaultEventDispatcher.cs">
+      <Link>RequestModel\Infrastructure\DefaultEventDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\DefaultQueryDispatcher.cs">
+      <Link>RequestModel\Infrastructure\DefaultQueryDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\RequestDispatcherEventSource.cs">
+      <Link>RequestModel\Infrastructure\RequestDispatcherEventSource.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\TraceCommandDispatcher.cs">
+      <Link>RequestModel\Infrastructure\TraceCommandDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\TraceEventDispatcher.cs">
+      <Link>RequestModel\Infrastructure\TraceEventDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\TraceQueryDispatcher.cs">
+      <Link>RequestModel\Infrastructure\TraceQueryDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\ServiceExtensions.cs">
+      <Link>RequestModel\ServiceExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IQuery.cs">
+      <Link>RequestModel\IQuery.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IQueryDispatcher.cs">
+      <Link>RequestModel\IQueryDispatcher.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IQueryHandler.cs">
+      <Link>RequestModel\IQueryHandler.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\QueryBase.cs">
+      <Link>RequestModel\QueryBase.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

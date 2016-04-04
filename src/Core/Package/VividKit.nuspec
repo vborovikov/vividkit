@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>VividKit</id>
+    <version>2.1.1.0</version>
+    <title>VividKit</title>
+    <authors>Vladislav Borovikov</authors>
+    <owners>Vladislav Borovikov</owners>
+    <licenseUrl>http://vividkit.codeplex.com/license</licenseUrl>
+    <projectUrl>http://vividkit.codeplex.com/</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>MVVM and CQRS Toolkit for .NET Core/4.5 apps</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright © 2015 Vladislav Borovikov</copyright>
+    <tags>mvvm cqrs</tags>
+    <dependencies>
+      <group targetFramework="dotnet">
+        <dependency id="System.Collections" version="4.0.10" />
+        <dependency id="System.ComponentModel" version="4.0.0" />
+        <dependency id="System.Diagnostics.Tracing" version="4.0.20" />
+        <dependency id="System.Linq" version="4.0.0" />
+        <dependency id="System.Linq.Expressions" version="4.0.10" />
+        <dependency id="System.ObjectModel" version="4.0.10" />
+        <dependency id="System.Reflection" version="4.0.10" />
+        <dependency id="System.Reflection.Extensions" version="4.0.0" />
+        <dependency id="System.Reflection.TypeExtensions" version="4.0.0" />
+        <dependency id="System.Runtime" version="4.0.20" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

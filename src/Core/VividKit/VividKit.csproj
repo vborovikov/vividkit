@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{DF47CADE-AE39-4CD1-81AC-379BC41BCF38}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Toolkit</RootNamespace>
+    <AssemblyName>VividKit</AssemblyName>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\VividKit.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\Package\lib\dotnet\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Release\VividKit.XML</DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\VividKit.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="ComponentModel\DefaultCommandManager.cs" />
+    <Compile Include="ComponentModel\Disposable.cs" />
+    <Compile Include="ComponentModel\ICleanup.cs" />
+    <Compile Include="ComponentModel\ICommandManager.cs" />
+    <Compile Include="ComponentModel\IDispatcher.cs" />
+    <Compile Include="ComponentModel\IWeakEventHandler.cs" />
+    <Compile Include="ComponentModel\PropertyManager.cs" />
+    <Compile Include="ComponentModel\DefaultWeakEventHandler.cs" />
+    <Compile Include="ComponentModel\ServiceProviderBase.cs" />
+    <Compile Include="DocumentModel\Document.cs" />
+    <Compile Include="DocumentModel\DocumentRepository.cs" />
+    <Compile Include="DocumentModel\Edit.cs" />
+    <Compile Include="DocumentModel\IChangeApplying.cs" />
+    <Compile Include="DocumentModel\IDocumentChangeStore.cs" />
+    <Compile Include="DocumentModel\IDocumentRepository.cs" />
+    <Compile Include="PresentationModel\IViewModelCommand.cs" />
+    <Compile Include="PresentationModel\Navigation\INavigable.cs" />
+    <Compile Include="PresentationModel\Navigation\INavigationService.cs" />
+    <Compile Include="PresentationModel\Navigation\ITombstone.cs" />
+    <Compile Include="PresentationModel\Navigation\IUriBuilder.cs" />
+    <Compile Include="PresentationModel\Navigation\NavigableAttribute.cs" />
+    <Compile Include="PresentationModel\Navigation\NavigableViewModel.cs" />
+    <Compile Include="PresentationModel\ViewModel.cs" />
+    <Compile Include="PresentationModel\ViewModelCommand.cs" />
+    <Compile Include="PresentationModel\ViewModelCommandBase.cs" />
+    <Compile Include="PresentationModel\ViewModelCommandExtensions.cs" />
+    <Compile Include="PresentationModel\ViewModelCommand`1.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RequestModel\CommandBase.cs" />
+    <Compile Include="RequestModel\DispatcherExtensions.cs" />
+    <Compile Include="RequestModel\EventBase.cs" />
+    <Compile Include="RequestModel\IAsyncCommandHandler.cs" />
+    <Compile Include="RequestModel\IAsyncEventHandler.cs" />
+    <Compile Include="RequestModel\IAsyncQueryHandler.cs" />
+    <Compile Include="RequestModel\ICommand.cs" />
+    <Compile Include="RequestModel\ICommandDispatcher.cs" />
+    <Compile Include="RequestModel\ICommandHandler.cs" />
+    <Compile Include="RequestModel\IEvent.cs" />
+    <Compile Include="RequestModel\IEventDispatcher.cs" />
+    <Compile Include="RequestModel\IEventHandler.cs" />
+    <Compile Include="RequestModel\IEventHandlerProvider.cs" />
+    <Compile Include="RequestModel\Infrastructure\DebugCommandDispatcher.cs" />
+    <Compile Include="RequestModel\Infrastructure\DebugEventDispatcher.cs" />
+    <Compile Include="RequestModel\Infrastructure\DebugQueryDispatcher.cs" />
+    <Compile Include="RequestModel\Infrastructure\DefaultCommandDispatcher.cs" />
+    <Compile Include="RequestModel\Infrastructure\DefaultEventDispatcher.cs" />
+    <Compile Include="RequestModel\Infrastructure\DefaultQueryDispatcher.cs" />
+    <Compile Include="RequestModel\Infrastructure\RequestDispatcherEventSource.cs" />
+    <Compile Include="RequestModel\Infrastructure\TraceCommandDispatcher.cs" />
+    <Compile Include="RequestModel\Infrastructure\TraceEventDispatcher.cs" />
+    <Compile Include="RequestModel\Infrastructure\TraceQueryDispatcher.cs" />
+    <Compile Include="RequestModel\IRequest.cs" />
+    <Compile Include="RequestModel\RequestBase.cs" />
+    <Compile Include="RequestModel\ServiceExtensions.cs" />
+    <Compile Include="RequestModel\IQuery.cs" />
+    <Compile Include="RequestModel\IQueryDispatcher.cs" />
+    <Compile Include="RequestModel\IQueryHandler.cs" />
+    <Compile Include="RequestModel\QueryBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\VividKit.pfx">
+      <Link>VividKit.pfx</Link>
+    </None>
+    <None Include="project.json" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
