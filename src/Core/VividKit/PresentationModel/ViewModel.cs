@@ -61,6 +61,7 @@
 
         private static IServiceProvider serviceProvider;
 
+        private readonly Dictionary<Delegate, IViewModelCommand> commands = new Dictionary<Delegate, IViewModelCommand>();
         private int busyCounter;
         private string busyStatus;
 
@@ -106,6 +107,11 @@
 
         protected IDispatcher Dispatcher { get; private set; }
 
+        /// <summary>
+        /// Occurs when a property value changes.
+        /// </summary>
+        public event PropertyChangedEventHandler PropertyChanged;
+
         internal static void RegisterServiceProvider(IServiceProvider serviceProvider)
         {
             if (ViewModel.serviceProvider != null || serviceProvider == null)
@@ -114,11 +120,6 @@
             }
 
             ViewModel.serviceProvider = serviceProvider;
-        }
-
-        internal void NotifyErrorOccured(Exception exception, object source, object state = null)
-        {
-            OnErrorOccured(exception, source, state);
         }
 
         protected static TService GetService<TService>()
@@ -131,10 +132,6 @@
 
             return serviceProvider.GetService(typeof(TService)) as TService;
         }
-
-        #region Command Support
-
-        private readonly Dictionary<Delegate, IViewModelCommand> commands = new Dictionary<Delegate, IViewModelCommand>();
 
         /// <summary>
         /// Gets the <see cref="ViewModelCommand"/> for the specified <see cref="Action"/> delegate.
@@ -179,32 +176,10 @@
             return command;
         }
 
-        #endregion Command Support
-
         protected IDisposable StayingBusy(string status = null)
         {
             return new BusyMonitor(this, status);
         }
-
-        /// <summary>
-        /// Called when an error occurred.
-        /// </summary>
-        /// <param name="exception">The exception.</param>
-        /// <param name="source">The source object caused an exception.</param>
-        /// <param name="state">The source object state.</param>
-        [Obsolete]
-        protected virtual void OnErrorOccured(Exception exception, object source, object state)
-        {
-        }
-
-        #region INotifyPropertyChanged Implementation
-
-        private readonly Dictionary<PropertyChangedEventArgs, Action> propertyChangeObservers = new Dictionary<PropertyChangedEventArgs, Action>();
-
-        /// <summary>
-        /// Occurs when a property value changes.
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Raises the <see cref="E:PropertyChanged"/> event.
@@ -213,12 +188,6 @@
         protected virtual void OnPropertyChanged(PropertyChangedEventArgs args)
         {
             PropertyManager.RaisePropertyChanged(this, this.PropertyChanged, args);
-
-            Action action = null;
-            if (this.propertyChangeObservers.TryGetValue(args, out action))
-            {
-                action.Invoke();
-            }
         }
 
         /// <summary>
@@ -244,40 +213,6 @@
         }
 
         /// <summary>
-        /// Registers an action to take when the property changes.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="triggerPropertyExpression">The trigger property expression.</param>
-        /// <param name="action">The action delegate.</param>
-        [Obsolete]
-        protected void ObservePropertyChanged<T>(Expression<Func<T>> triggerPropertyExpression, Action action)
-        {
-            var triggerPropertyChangedEventArgs = PropertyManager.GetPropertyChangedEventArgs(this, triggerPropertyExpression);
-            this.propertyChangeObservers.Add(triggerPropertyChangedEventArgs, action);
-        }
-
-        #endregion INotifyPropertyChanged Implementation
-
-        #region IDisposable Implementation
-
-        private readonly List<IDisposable> disposables = new List<IDisposable>();
-
-        /// <summary>
-        /// Registers the disposable object for releasing afterwards.
-        /// </summary>
-        /// <param name="disposable">The disposable object.</param>
-        [Obsolete]
-        protected internal void RegisterDisposable(IDisposable disposable)
-        {
-            if (disposable == null)
-                throw new ArgumentNullException(nameof(disposable));
-            if (this.disposables.Contains(disposable))
-                throw new InvalidOperationException();
-
-            this.disposables.Add(disposable);
-        }
-
-        /// <summary>
         /// Releases managed resources.
         /// </summary>
         protected override void DisposeManagedObjects()
@@ -285,12 +220,7 @@
             foreach (var command in this.commands)
                 command.Value.Dispose();
 
-            foreach (var disposable in this.disposables)
-                disposable.Dispose();
-
-            this.disposables.Clear();
+            this.commands.Clear();
         }
-
-        #endregion IDisposable Implementation
     }
 }
