@@ -54,11 +54,11 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="ComponentModel\DefaultCommandManager.cs" />
+    <Compile Include="PresentationModel\DefaultCommandManager.cs" />
     <Compile Include="ComponentModel\Disposable.cs" />
-    <Compile Include="ComponentModel\ICleanup.cs" />
-    <Compile Include="ComponentModel\ICommandManager.cs" />
-    <Compile Include="ComponentModel\IDispatcher.cs" />
+    <Compile Include="PresentationModel\ICleanup.cs" />
+    <Compile Include="PresentationModel\ICommandManager.cs" />
+    <Compile Include="PresentationModel\IDispatcher.cs" />
     <Compile Include="ComponentModel\IWeakEventHandler.cs" />
     <Compile Include="ComponentModel\PropertyManager.cs" />
     <Compile Include="ComponentModel\DefaultWeakEventHandler.cs" />

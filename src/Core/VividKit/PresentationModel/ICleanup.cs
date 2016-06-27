@@ -1,4 +1,4 @@
-﻿namespace Toolkit.ComponentModel
+﻿namespace Toolkit.PresentationModel
 {
     /// <summary>
     /// Defines a method to reset the state of an object.

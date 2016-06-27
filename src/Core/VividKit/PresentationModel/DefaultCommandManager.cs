@@ -1,9 +1,9 @@
-﻿namespace Toolkit.ComponentModel
+﻿namespace Toolkit.PresentationModel
 {
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using PresentationModel;
+    using ComponentModel;
 
     public class DefaultCommandManager : ICommandManager
     {

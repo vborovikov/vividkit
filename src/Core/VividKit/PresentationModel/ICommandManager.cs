@@ -1,7 +1,6 @@
-﻿namespace Toolkit.ComponentModel
+﻿namespace Toolkit.PresentationModel
 {
     using System;
-    using PresentationModel;
 
     public interface ICommandManager
     {

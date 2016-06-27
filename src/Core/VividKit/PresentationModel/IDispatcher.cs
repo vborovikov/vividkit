@@ -1,4 +1,4 @@
-﻿namespace Toolkit.ComponentModel
+﻿namespace Toolkit.PresentationModel
 {
     using System;
     using System.Threading.Tasks;
