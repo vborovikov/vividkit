@@ -6,7 +6,7 @@
     /// <summary>
     /// Represents the <see cref="ViewModel"/> command.
     /// </summary>
-    public interface IViewModelCommand : ICommand
+    public interface IViewModelCommand : ICommand, IDisposable
     {
         /// <summary>
         /// Gets or sets the command short name.

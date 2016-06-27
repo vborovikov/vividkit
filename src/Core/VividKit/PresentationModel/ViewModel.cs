@@ -134,7 +134,7 @@
 
         #region Command Support
 
-        private readonly Dictionary<Delegate, ViewModelCommandBase> commands = new Dictionary<Delegate, ViewModelCommandBase>();
+        private readonly Dictionary<Delegate, IViewModelCommand> commands = new Dictionary<Delegate, IViewModelCommand>();
 
         /// <summary>
         /// Gets the <see cref="ViewModelCommand"/> for the specified <see cref="Action"/> delegate.
@@ -145,11 +145,11 @@
         /// <returns>Returns the command object.</returns>
         protected IViewModelCommand GetCommand(Action execute, Func<bool> canExecute = null, Action<IViewModelCommand> setup = null)
         {
-            ViewModelCommandBase command = null;
+            IViewModelCommand command = null;
             if (this.commands.TryGetValue(execute, out command))
                 return command;
 
-            command = new ViewModelCommand(this, canExecute, execute);
+            command = this.CommandManager.CreateCommand(execute, canExecute);
             this.commands.Add(execute, command);
             if (setup != null)
                 setup(command);
@@ -165,13 +165,13 @@
         /// <param name="canExecute">The delegate that determines whenever the command can be executed.</param>
         /// <param name="setup">The delegate that sets the command properties.</param>
         /// <returns>Returns the command object</returns>
-        protected IViewModelCommand GetCommand<T>(Action<T> execute, Predicate<T> canExecute = null, Action<IViewModelCommand> setup = null)
+        protected IViewModelCommand GetCommand<T>(Action<T> execute, Func<T, bool> canExecute = null, Action<IViewModelCommand> setup = null)
         {
-            ViewModelCommandBase command = null;
+            IViewModelCommand command = null;
             if (this.commands.TryGetValue(execute, out command))
                 return command;
 
-            command = new ViewModelCommand<T>(this, canExecute, execute);
+            command = this.CommandManager.CreateCommand(execute, canExecute);
             this.commands.Add(execute, command);
             if (setup != null)
                 setup(command);
@@ -192,6 +192,7 @@
         /// <param name="exception">The exception.</param>
         /// <param name="source">The source object caused an exception.</param>
         /// <param name="state">The source object state.</param>
+        [Obsolete]
         protected virtual void OnErrorOccured(Exception exception, object source, object state)
         {
         }
@@ -248,6 +249,7 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="triggerPropertyExpression">The trigger property expression.</param>
         /// <param name="action">The action delegate.</param>
+        [Obsolete]
         protected void ObservePropertyChanged<T>(Expression<Func<T>> triggerPropertyExpression, Action action)
         {
             var triggerPropertyChangedEventArgs = PropertyManager.GetPropertyChangedEventArgs(this, triggerPropertyExpression);
@@ -264,10 +266,11 @@
         /// Registers the disposable object for releasing afterwards.
         /// </summary>
         /// <param name="disposable">The disposable object.</param>
+        [Obsolete]
         protected internal void RegisterDisposable(IDisposable disposable)
         {
             if (disposable == null)
-                throw new ArgumentNullException("disposable");
+                throw new ArgumentNullException(nameof(disposable));
             if (this.disposables.Contains(disposable))
                 throw new InvalidOperationException();
 
@@ -279,6 +282,9 @@
         /// </summary>
         protected override void DisposeManagedObjects()
         {
+            foreach (var command in this.commands)
+                command.Value.Dispose();
+
             foreach (var disposable in this.disposables)
                 disposable.Dispose();
 

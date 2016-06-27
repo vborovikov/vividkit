@@ -1,11 +1,16 @@
 ﻿namespace Toolkit.ComponentModel
 {
-	using System;
+    using System;
+    using PresentationModel;
 
-	public interface ICommandManager
-	{
-		event EventHandler RequerySuggested;
+    public interface ICommandManager
+    {
+        event EventHandler RequerySuggested;
 
-		void InvalidateRequerySuggested();
-	}
+        void InvalidateRequerySuggested();
+
+        IViewModelCommand CreateCommand(Action execute, Func<bool> canExecute);
+
+        IViewModelCommand CreateCommand<T>(Action<T> execute, Func<T, bool> canExecute);
+    }
 }

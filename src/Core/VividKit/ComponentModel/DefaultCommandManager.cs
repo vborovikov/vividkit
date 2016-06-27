@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Reflection;
+    using PresentationModel;
 
     public class DefaultCommandManager : ICommandManager
     {
@@ -34,6 +35,16 @@
             {
                 this.dispatcherOperation = this.dispatcher.InvokeAsync(InvokeEventHandlers);
             }
+        }
+
+        public IViewModelCommand CreateCommand(Action execute, Func<bool> canExecute)
+        {
+            return new ViewModelCommand(this, execute, canExecute);
+        }
+
+        public IViewModelCommand CreateCommand<T>(Action<T> execute, Func<T, bool> canExecute)
+        {
+            return new ViewModelCommand<T>(this, execute, canExecute);
         }
 
         protected virtual IWeakEventHandler CreateWeakEventHandler(EventHandler eventHandler)

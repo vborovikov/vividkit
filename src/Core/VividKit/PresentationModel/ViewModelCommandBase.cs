@@ -8,9 +8,9 @@
     /// <summary>
     /// Represents the <see cref="ViewModel"/> command.
     /// </summary>
-    internal abstract class ViewModelCommandBase : IViewModelCommand, INotifyPropertyChanged
+    public abstract class ViewModelCommandBase : Disposable, IViewModelCommand, INotifyPropertyChanged
     {
-        private readonly ViewModel owner;
+        private readonly ICommandManager owner;
         private string name;
         private string text;
         private Uri image;
@@ -20,7 +20,7 @@
         /// Initializes a new instance of the <see cref="ViewModelCommandBase"/> class.
         /// </summary>
         /// <param name="owner">The owner of the command.</param>
-        protected ViewModelCommandBase(ViewModel owner)
+        protected ViewModelCommandBase(ICommandManager owner)
         {
             this.owner = owner;
         }
@@ -97,10 +97,10 @@
         /// <summary>
         /// Occurs when changes occur that affect whether or not the command should execute.
         /// </summary>
-        public event EventHandler CanExecuteChanged
+        public virtual event EventHandler CanExecuteChanged
         {
-            add { this.owner.CommandManager.RequerySuggested += value; }
-            remove { this.owner.CommandManager.RequerySuggested -= value; }
+            add { this.owner.RequerySuggested += value; }
+            remove { this.owner.RequerySuggested -= value; }
         }
 
         /// <summary>
@@ -156,14 +156,7 @@
 
         private void ExecuteCore(object parameter)
         {
-            try
-            {
-                ExecuteOverride(parameter);
-            }
-            catch (Exception exception)
-            {
-                this.owner.NotifyErrorOccured(exception, this, parameter);
-            }
+            ExecuteOverride(parameter);
         }
     }
 }
