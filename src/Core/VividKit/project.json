@@ -1,9 +1,5 @@
 ﻿{
-    "supports": {
-        "net46.app": {},
-        "uwp.10.0.app": {},
-        "netcoreapp1.0.app": {}
-    },
+    "supports": {},
     "dependencies": {
         "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
         "NETStandard.Library": "1.6.0",
