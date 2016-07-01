@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Reflection;
     using ComponentModel;
 
@@ -50,7 +51,13 @@
         protected virtual IWeakEventHandler CreateWeakEventHandler(EventHandler eventHandler)
         {
             var wehType = typeof(DefaultWeakEventHandler<>).MakeGenericType(eventHandler.GetMethodInfo().DeclaringType);
-            var wehConstructor = wehType.GetConstructor(new[] { typeof(EventHandler) });
+            var wehConstructor =
+#if PORTABLE
+                wehType.GetTypeInfo().DeclaredConstructors.Single(ctor => ctor.IsPublic &&
+                    ctor.GetParameters().Select(cp => cp.ParameterType).SequenceEqual(new[] { typeof(EventHandler) }));
+#else
+                wehType.GetConstructor(new[] { typeof(EventHandler) });
+#endif
             var weh = (IWeakEventHandler)wehConstructor.Invoke(new[] { eventHandler });
 
             return weh;

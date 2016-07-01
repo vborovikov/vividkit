@@ -1,12 +1,28 @@
 ﻿namespace Toolkit.RequestModel
 {
+    using System.Linq;
     using System.Reflection;
     using System.Threading.Tasks;
 
     public static class DispatcherExtensions
     {
-        private static readonly MethodInfo executeAsyncMethod = typeof(ICommandDispatcher).GetMethod("ExecuteAsync", BindingFlags.Public | BindingFlags.Instance);
-        private static readonly MethodInfo publishAsyncMethod = typeof(IEventDispatcher).GetMethod("PublishAsync", BindingFlags.Public | BindingFlags.Instance);
+        private static readonly MethodInfo executeAsyncMethod =
+#if PORTABLE
+            typeof(ICommandDispatcher).GetTypeInfo().DeclaredMethods
+                .Single(m => m.Name == "ExecuteAsync" && m.IsPublic && m.IsStatic == false);
+
+#else
+            typeof(ICommandDispatcher).GetMethod("ExecuteAsync", BindingFlags.Public | BindingFlags.Instance);
+#endif
+
+        private static readonly MethodInfo publishAsyncMethod =
+#if PORTABLE
+            typeof(ICommandDispatcher).GetTypeInfo().DeclaredMethods
+                .Single(m => m.Name == "PublishAsync" && m.IsPublic && m.IsStatic == false);
+
+#else
+            typeof(IEventDispatcher).GetMethod("PublishAsync", BindingFlags.Public | BindingFlags.Instance);
+#endif
 
         public static Task ExecuteGenericAsync(this ICommandDispatcher commandDispatcher, ICommand command)
         {

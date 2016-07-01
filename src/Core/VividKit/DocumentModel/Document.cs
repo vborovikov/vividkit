@@ -12,7 +12,12 @@
         public const int NoVersion = -1;
 
         private static readonly MethodInfo applyChangeMethod =
+#if PORTABLE
+            typeof(Document).GetTypeInfo().DeclaredMethods.Single(m => m.Name == nameof(ApplyChangeInternal) && m.IsPublic == false && m.IsStatic);
+
+#else
             typeof(Document).GetMethod("ApplyChangeInternal", BindingFlags.NonPublic | BindingFlags.Static);
+#endif
 
         private readonly List<Edit> changes;
 
