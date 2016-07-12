@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>VividKit</id>
-    <version>2.2.4.0</version>
+    <version>2.2.5.0</version>
     <title>VividKit</title>
     <authors>Vladislav Borovikov</authors>
     <owners>Vladislav Borovikov</owners>
@@ -15,21 +15,10 @@
     <tags>mvvm cqrs</tags>
     <dependencies>
       <group targetFramework="netstandard1.3">
-        <dependency id="Microsoft.NETCore.Portable.Compatibility" version="1.0.1" />
-        <dependency id="NETStandard.Library" version="1.6.0" />
-        <dependency id="System.Collections" version="4.0.11" />
-        <dependency id="System.ComponentModel" version="4.0.1" />
-        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
-        <dependency id="System.Diagnostics.Tracing" version="4.1.0" />
-        <dependency id="System.Linq" version="4.1.0" />
-        <dependency id="System.Linq.Expressions" version="4.1.0" />
-        <dependency id="System.ObjectModel" version="4.0.12" />
-        <dependency id="System.Reflection" version="4.1.0" />
-        <dependency id="System.Reflection.Extensions" version="4.0.1" />
-        <dependency id="System.Reflection.TypeExtensions" version="4.1.0" />
-        <dependency id="System.Runtime" version="4.1.0" />
-        <dependency id="System.Runtime.Extensions" version="4.1.0" />
-        <dependency id="System.Threading" version="4.0.11" />
+        <dependency id="NETStandard.Library" version="[1.6.0, )" />
+        <dependency id="System.ComponentModel" version="[4.0.1, )" />
+        <dependency id="System.Reflection" version="[4.1.0, )" />
+        <dependency id="System.Reflection.TypeExtensions" version="[4.1.0, )" />
       </group>
     </dependencies>
   </metadata>
