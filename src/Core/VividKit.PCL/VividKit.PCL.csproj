@@ -179,6 +179,9 @@
     <Compile Include="..\VividKit\RequestModel\Infrastructure\DefaultQueryDispatcher.cs">
       <Link>RequestModel\Infrastructure\DefaultQueryDispatcher.cs</Link>
     </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\RequestDispatcherBase.cs">
+      <Link>RequestModel\Infrastructure\RequestDispatcherBase.cs</Link>
+    </Compile>
     <Compile Include="..\VividKit\RequestModel\Infrastructure\RequestDispatcherEventSource.cs">
       <Link>RequestModel\Infrastructure\RequestDispatcherEventSource.cs</Link>
     </Compile>
@@ -202,6 +205,9 @@
     </Compile>
     <Compile Include="..\VividKit\RequestModel\IRequest.cs">
       <Link>RequestModel\IRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IRequestDispatcher.cs">
+      <Link>RequestModel\IRequestDispatcher.cs</Link>
     </Compile>
     <Compile Include="..\VividKit\RequestModel\QueryBase.cs">
       <Link>RequestModel\QueryBase.cs</Link>

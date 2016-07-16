@@ -99,11 +99,13 @@
     <Compile Include="RequestModel\Infrastructure\DefaultCommandDispatcher.cs" />
     <Compile Include="RequestModel\Infrastructure\DefaultEventDispatcher.cs" />
     <Compile Include="RequestModel\Infrastructure\DefaultQueryDispatcher.cs" />
+    <Compile Include="RequestModel\Infrastructure\RequestDispatcherBase.cs" />
     <Compile Include="RequestModel\Infrastructure\RequestDispatcherEventSource.cs" />
     <Compile Include="RequestModel\Infrastructure\TraceCommandDispatcher.cs" />
     <Compile Include="RequestModel\Infrastructure\TraceEventDispatcher.cs" />
     <Compile Include="RequestModel\Infrastructure\TraceQueryDispatcher.cs" />
     <Compile Include="RequestModel\IRequest.cs" />
+    <Compile Include="RequestModel\IRequestDispatcher.cs" />
     <Compile Include="RequestModel\RequestBase.cs" />
     <Compile Include="RequestModel\ServiceExtensions.cs" />
     <Compile Include="RequestModel\IQuery.cs" />

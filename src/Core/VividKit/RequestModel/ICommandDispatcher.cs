@@ -1,10 +1,10 @@
 namespace Toolkit.RequestModel
 {
-	using System;
-	using System.Threading.Tasks;
+    using System;
+    using System.Threading.Tasks;
 
-	public interface ICommandDispatcher
-	{
-		Task ExecuteAsync<TCommand>(TCommand command) where TCommand : class, ICommand;
-	}
+    public interface ICommandDispatcher : IRequestDispatcher
+    {
+        Task ExecuteAsync<TCommand>(TCommand command) where TCommand : ICommand;
+    }
 }

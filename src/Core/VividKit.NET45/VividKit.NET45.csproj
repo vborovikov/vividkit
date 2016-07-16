@@ -59,8 +59,14 @@
     <Compile Include="..\VividKit\RequestModel\Infrastructure\DebugQueryDispatcher.cs">
       <Link>RequestModel\Infrastructure\DebugQueryDispatcher.cs</Link>
     </Compile>
+    <Compile Include="..\VividKit\RequestModel\Infrastructure\RequestDispatcherBase.cs">
+      <Link>RequestModel\Infrastructure\RequestDispatcherBase.cs</Link>
+    </Compile>
     <Compile Include="..\VividKit\RequestModel\IRequest.cs">
       <Link>RequestModel\IRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\VividKit\RequestModel\IRequestDispatcher.cs">
+      <Link>RequestModel\IRequestDispatcher.cs</Link>
     </Compile>
     <Compile Include="..\VividKit\RequestModel\RequestBase.cs">
       <Link>RequestModel\RequestBase.cs</Link>

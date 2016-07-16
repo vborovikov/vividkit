@@ -17,7 +17,12 @@ namespace Toolkit.RequestModel.Infrastructure
             this.dispatcherName = this.dispatcher.DiscoverDispatcherName();
         }
 
-        public async Task ExecuteAsync<TCommand>(TCommand command) where TCommand : class, ICommand
+        public void Dispose()
+        {
+            this.dispatcher.Dispose();
+        }
+
+        public async Task ExecuteAsync<TCommand>(TCommand command) where TCommand : ICommand
         {
             var commandName = command.GetType().Name + "(" + command.GetHashCode() + ")";
             var stopwatch = new Stopwatch();
@@ -40,6 +45,11 @@ namespace Toolkit.RequestModel.Infrastructure
                 Debug.WriteLine("{0} executed {1} ({2} ms)", this.dispatcherName,
                     commandName, stopwatch.ElapsedMilliseconds);
             }
+        }
+
+        public bool Wait(TimeSpan timeout)
+        {
+            return this.dispatcher.Wait(timeout);
         }
     }
 }

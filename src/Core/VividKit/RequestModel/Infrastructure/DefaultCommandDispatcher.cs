@@ -3,7 +3,7 @@
     using System;
     using System.Threading.Tasks;
 
-    public class DefaultCommandDispatcher : ICommandDispatcher
+    public class DefaultCommandDispatcher : RequestDispatcherBase, ICommandDispatcher
     {
         private readonly IServiceProvider serviceProvider;
 
@@ -12,7 +12,7 @@
             this.serviceProvider = serviceProvider;
         }
 
-        public async Task ExecuteAsync<TCommand>(TCommand command) where TCommand : class, ICommand
+        public async Task ExecuteAsync<TCommand>(TCommand command) where TCommand : ICommand
         {
             var asyncCommandHandler = this.serviceProvider.GetService<IAsyncCommandHandler<TCommand>>();
             if (asyncCommandHandler != null)
